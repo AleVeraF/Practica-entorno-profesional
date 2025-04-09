@@ -27,3 +27,9 @@
     @apply text-gray-600 text-sm text-center mb-4;
   }
 }
+
+@layer base {
+    body {
+      font-family: 'Proxima Nova', sans-serif;
+    }
+  }

@@ -23,7 +23,7 @@ function ProductCard({ title, description, image }) {
       </button>
 
       {/* Sección de comentarios */}
-      <div className="comentarios mt-4">
+      <div className="comentarios mt-4 text-center"> {/* Alineamos todo al centro */}
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}

@@ -51,9 +51,10 @@ function App() {
 
   return (
     <div className="bg-blue-200 p-6">
-      <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 dark:text-gray-100 text-center tracking-wide">
+      <h1 className="text-5xl md:text-7xl font-extrabold text-black dark:text-white text-center tracking-tight">
         Instagram
       </h1>
+
       <SearchBar onSearch={setSearch} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
