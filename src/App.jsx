@@ -1,36 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './index.css'
+import { useState } from 'react';
+import ProductCard from './components/ProductCard';
+import SearchBar from './components/SearchBar';
+import './styles/index.css';
+
+const productos = [
+  {
+    id: 1,
+    title: 'Ana',
+    description: 'Camino con arboles',
+    image: 'https://picsum.photos/100',
+  },
+  {
+    id: 2,
+    title: 'Luis',
+    description: 'Perro negro con ojos oscuros',
+    image: 'https://picsum.photos/200',
+  },
+  {
+    id: 3,
+    title: 'Alex',
+    description: 'Taza para desarrolladores frontend.',
+    image: 'https://picsum.photos/300',
+  },
+  {
+    id: 4,
+    title: 'María',
+    description: 'Camino con arboles',
+    image: 'https://picsum.photos/400',
+  },
+  {
+    id: 5,
+    title: 'Juan',
+    description: 'Perro negro con ojos oscuros',
+    image: 'https://picsum.photos/500',
+  },
+  {
+    id: 6,
+    title: 'Claudia',
+    description: 'Taza para desarrolladores frontend.',
+    image: 'https://picsum.photos/600',
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [search, setSearch] = useState('');
+
+  const productosFiltrados = productos.filter((producto) =>
+    producto.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="bg-blue-200 p-6">
+      <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 dark:text-gray-100 text-center tracking-wide">
+        Instagram
+      </h1>
+      <SearchBar onSearch={setSearch} />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {productosFiltrados.map((p) => (
+          <ProductCard
+            key={p.id}
+            title={p.title}
+            description={p.description}
+            image={p.image}
+          />
+        ))}
       </div>
-      <h1 className="text-red-500 p-4">Vite + React</h1>
-      <p className=""></p>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
